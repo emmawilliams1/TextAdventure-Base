@@ -1,28 +1,51 @@
 //Author: Emma Williams
 
-var inputBox = document.querySelector('section > input');
+var player = {
+	name: name,
+	health: health,
+	items: [],
+	pickup: function( item ){
+			this.items.push( item );
+		},
+	drop: function( item ){
+		var pos = this.items.indexOf( item );
+		if (pos >= 0) {
+			this.items.splice(pos, 1)
+		}
+	}
+}
 
-console.log ( inputBox.tagName );
-console.log ( inputBox.parentNode.tagName );
+function interpret ( input ) {
+	var trimmedInput = input.toLowerCase.trim;
+	var splitInput = trimmed.Input.split(' ');
+	var action = splitInput[0];
+	splitInput.remove(0);
+	var inventory = '';
+	for(i = 1; i < splitInput.length; i++){
+		inventory = inventory + splitInput[i] + ' ';
+	}
+	return inventory;
+}
 
-var weAreDumb = document.querySelector('#inventory');
-console.log (weAreDumb.tagName );
-console.log (weAreDumb.parentNode.tagName );
+function execute ( inventory ){
+	var action = inventory[0];
+	
+}
 
-var tryingSoHard = document.querySelector('body > main > output > label');
-console.log (tryingSoHard.tagName );
-console.log (tryingSoHard.parentNode.tagName );
+function report () {
+	for (i=0; i < player.items.length; i++){
+		var inventoryHTML = querySelector('ul');
+		inventoryHTML += player.items[1];
+	}
+}
 
-var prepareToFail = document.querySelector('#help');
-console.log (prepareToFail.tagName);
-console.log (prepareToFail.parentNode.tagName);
+var gameStart = function(){
+	var inputBox = document.querySelector('input');
+	inputBox.addEventListener('keyup', function(event){
+		if (event.keyCode === 13) {
+			gameStep(this.value);
+		}
+	});
+}
 
-var childrenOfPrepareToFail = prepareToFail.childNodes;
-
-for (i=0; i < childrenOfPrepareToFail.length; i++ ){
-  console.log( childrenOfPrepareToFail[i].tagName );
-};
-
-console.log(document.getElementsByTagName('aside'));
-
-console.log(document.getElementById('inventory');
+window.onload = gameStart;
