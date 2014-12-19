@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Emma's Game</title>
+	<meta charset='utf-8'/>
+	<script type="text/javascript">
+	function newGame(){
+		window.location.href = "index.html";
+	}
+	</script>
+	<style type="text/css">
+		#header{
+			float: left;
+			top: 0px;
+			left: 0px;
+			height: 70px;
+			width: 100%;
+			background-color: blue;
+			position: fixed
+		}
+		#bodyContent{
+			margin-top: 90px;
+			/*position: fixed;*/
+			/*margin: auto;*/
+			text-align: center;
+		}
+		h1{
+			float: left; 
+			margin: 0px; 
+			color: #FFFFFF; 
+			height: inherit;
+		}
+		h2{
+			float: left;
+			margin-left: 0px;
+			margin-top: 35px;
+			color: #FFFFFF;
+			height: inherit;
+		}
+	</style>
+</head>
+<body>
+	<body>
+		<div id="header">
+			<h1>Jungle Adventure</h1>
+			<h2>Can You Escape the Jungle?</h2>
+		</div>
+		<div id="bodyContent">
+			<p style="text-align: center">Thank You for playing, play again?
+			<br>
+			<button id='yes' onclick='newGame()'>Yes</button>
+			<!-- <button id='no' onclick='closeTab()'>No</button> -->
+		</div>
+</body>
+</html>
