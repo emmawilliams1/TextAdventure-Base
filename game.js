@@ -1,67 +1,62 @@
-//Author: Emma Williams
-
-var player = {
-	name: name,
-	health: health,
-	items: [],
-	pickup: function( item ){
-			this.items.push( item );
-		},
-	drop: function( item ){
-		var pos = this.items.indexOf( item );
-		if (pos >= 0) {
-			this.items.splice(pos, 1)
-		}
-	}
-	var report = function (){
-		for (i=0; i < player.item.length; i++){
-			var inventoryHTML = querySelector('ul');
-			return inventoryHTML += this.items[i];
-		}
-	}
-}
-
-function interpret ( input ) {
-	var trimmedInput = input.toLowerCase().trim();
-	var splitInput = trimmed.Input.split(' ');
-	//var action = splitInput[0];
-	//splitInput.remove(0);
-	var inventory = '';
-	for(i = 1; i < splitInput.length; i++){
-		inventory.push(trimmedInput[i] + ' '); 
-	};
-	return inventory;
+var player = function(name){
+   var Player ={
+    name: name,
+    items: [[], []],
+    advantage: None
+   };
+   Player.pickup = function(item){
+     this.items.push(item);
+   };
+   Player.drop = function(){
+    this.items.pop();
+   }
+   Player.getName = function(){
+    
+   }
 };
-
-function execute ( inventory ){
-	var action = inventory.splice(0,0);
-	var object = inventory;
-	var action = function(object){
-	}
+ 
+var interpret = function(input){
+    var str = input.toLowerCase().trim();
+    var res = str.split(" ");
+    var inventory = [];
+    for(i = 1; i < res.length; i++){
+      inventory.push(res[i] + ' ');
+    };
+    return inventory;
 };
-
+ 
+var execute = function(inventory){
+    var action = inventory.splice(0,0);
+    var object = inventory;
+    //player[action](object);
+    var action = function(object){
+    };
+};  
+ 
 var report = function(inventory){
-	var list = document.getElementById('inventoryList');
-	for (var i = 0; i < inventory.length; i++) {
-		var li = document.createElement('li')
-		li.appendChild(document.createTextNode(inventory[i]));
-		list.appendChild(li);
-	};
+    var list = document.getElementById('inventoryList');
+    for (var i = 0; i < inventory.length; i++){
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(inventory[i]));
+      list.appendChild(li);
+    }
 };
 
-var gameStep = function (){
-	var cmd = interpret(input);
-	var result = execute(cmd);
-	report(result);
+var gameStep = function(){
+    if(event.keyCode === 38){
+      console.log('Moved Up');
+        player.setY(player.getY() - 1);
+   }
+    else if(event.keyCode === 40){
+        console.log('Moved Down');
+        player.setY(player.getY() + 1);
+   }
+   else if(event.keyCode === 37){
+        console.log('Moved Left');
+        player.setX(player.getX() + 1);
+   }
+   else if(event.keyCode === 39){
+      console.log('Moved Right');
+        player.setX(player.getX() - 1);
+   }
 }
-
-var gameStart = function(){
-	var inputBox = document.querySelector('input');
-	inputBox.addEventListener('keyup', function(event){
-		if (event.keyCode === 13) {
-			gameStep(this.value);
-		}
-	});
-};
-
-window.onload = gameStart;
